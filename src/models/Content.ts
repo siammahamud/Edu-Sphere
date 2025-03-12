@@ -1,3 +1,4 @@
+import { ContentModel, IContent } from "@/interfaces/content-interface";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
@@ -20,12 +21,13 @@ const lessonSchema = new Schema({
   ],
 });
 
-const contentSchema = new Schema({
+const contentSchema = new Schema<IContent>({
   week: { type: Number, required: true },
   title: { type: String, required: true },
   lessons: [lessonSchema],
 });
 
 export const Content =
-  mongoose.models.Content ??
-  mongoose.model("Content", contentSchema);
+   mongoose.models.Content ??
+    mongoose.model<IContent,ContentModel>("Content", contentSchema);
+  
