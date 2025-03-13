@@ -10,15 +10,7 @@ export interface IQuizQuestion {
   answer: string;
 }
 
-export interface ILesson {
-  _id: string;
-  title: string;
-  videoUrl: string;
-  resources: IResource[];
-  quiz: IQuizQuestion[];
-  createdAt: Date;
-  updatedAt: Date;
-}
+
 
 export interface IContent {
   _id: string; // Unique identifier for the content
@@ -34,4 +26,4 @@ export interface IContent {
 }
 
 export type ContentModel = Model<IContent, Record<string, unknown>, unknown>;
-export type LessonModel = Model<ILesson, Record<string, unknown>, unknown>;
+

@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 import {Prerequisite} from "./Prerequisite";
+import { ICourse } from "@/interfaces/course-interface";
 
 
 const { Schema } = mongoose;
 
-const courseSchema = new Schema(
+const courseSchema = new Schema<ICourse>(
   {
     title: { type: String, required: true, unique: true },
     slug: { type: String, required: true, unique: true },
