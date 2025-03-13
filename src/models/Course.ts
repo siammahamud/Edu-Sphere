@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {Prerequisite} from "./Prerequisite";
-import { ICourse } from "@/interfaces/course-interface";
+import { CourseModel, ICourse } from "@/interfaces/course-interface";
 
 
 const { Schema } = mongoose;
@@ -30,5 +30,6 @@ const courseSchema = new Schema<ICourse>(
 );
 
 export const Course =
-  mongoose.models.Course ??
-  mongoose.model("Course", courseSchema);
+   mongoose.models.Course ??
+    mongoose.model<ICourse,CourseModel>("Content", courseSchema);
+  

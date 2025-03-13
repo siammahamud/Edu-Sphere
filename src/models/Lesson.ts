@@ -1,8 +1,9 @@
+import { ILesson, LessonModel } from "@/interfaces/lesson-interface";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const lessonSchema = new Schema(
+const lessonSchema = new Schema<ILesson>(
   {
     moduleId: { type: Schema.Types.ObjectId, ref: "Module", required: true },
     title: { type: String, required: true },
@@ -15,5 +16,5 @@ const lessonSchema = new Schema(
 
 export const Lesson =
   mongoose.models.Lesson ?? 
-  mongoose.model("Lesson", lessonSchema);
+  mongoose.model<ILesson, LessonModel>("Lesson", lessonSchema);
 

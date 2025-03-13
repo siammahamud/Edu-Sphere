@@ -1,8 +1,9 @@
+import { IQuiz, QuizModel } from "@/interfaces/quiz-interface";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const quizSchema = new Schema(
+const quizSchema = new Schema<IQuiz>(
   {
     title: { type: String, required: true },
     lessonId: { type: Schema.Types.ObjectId, ref: "Lesson", required: true },
@@ -17,6 +18,6 @@ const quizSchema = new Schema(
   { timestamps: true }
 );
 
-export const Quizr =
+export const Quiz =
   mongoose.models.Quiz ?? 
-  mongoose.model("Quiz", quizSchema);
+  mongoose.model<IQuiz, QuizModel>("Quiz", quizSchema);

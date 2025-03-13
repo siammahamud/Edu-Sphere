@@ -1,8 +1,9 @@
+import { IReview, ReviewModel } from "@/interfaces/review-interface";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const reviewSchema = new Schema(
+const reviewSchema = new Schema<IReview>(
   {
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     courseId: { type: Schema.Types.ObjectId, ref: "Course", required: true },
@@ -14,4 +15,4 @@ const reviewSchema = new Schema(
 
 export const Review =
   mongoose.models.Review ??
-   mongoose.model("Review", reviewSchema);
+   mongoose.model<IReview, ReviewModel>("Review", reviewSchema);

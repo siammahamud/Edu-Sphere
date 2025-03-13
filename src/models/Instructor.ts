@@ -1,3 +1,4 @@
+import { IInstructor, instructorModel } from "@/interfaces/instructor-interface";
 import mongoose from "mongoose";
 
 const { Schema} = mongoose;
@@ -18,5 +19,6 @@ const instructorSchema = new Schema(
 );
 
 export const Instructor =
-  mongoose.models.Instructor ?? 
-  mongoose.model("Instructor", instructorSchema);
+   mongoose.models.Instructor ??
+    mongoose.model<IInstructor,instructorModel>("Instructor", instructorSchema);
+  
