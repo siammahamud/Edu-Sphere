@@ -4,19 +4,16 @@ import mongoose, { Schema } from "mongoose";
 const categorySchema = new Schema<ICategory>({
   title: {
     required: true,
-
     type: String,
   },
 
   description: {
     required: false,
-
     type: String,
   },
 
   thumbnail: {
     required: true,
-
     type: String,
   },
 });
