@@ -4,17 +4,18 @@ import { getCourses } from "@/controllers/course-controller";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
-// import CourseCard from "./courses/_components/CourseCard";
-// import { getCategories } from "@/controller/category-controller";
 import Image from "next/image";
 import { getCategories } from "@/controllers/category-controller";
+import { SectionTitle } from "@/components/sectionTitle";
+import CourseCard from "./courses/_components/courseCard";
+
 
 const HomePage = async () => {
   const courses = await getCourses();
   const categories = await getCategories();
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-2 sm:px-4 md:px-8 lg:px-12">
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 grainy">
         <div className="container mx-auto flex max-w-[64rem] flex-col items-center gap-4 text-center relative isolate">
           <div
@@ -66,7 +67,7 @@ const HomePage = async () => {
         className="container space-y-6  py-8  md:py-12 lg:py-24"
       >
         <div className="flex items-center justify-between">
-          <h1>Categories</h1>
+          <SectionTitle>Categories</SectionTitle>
 
           <Link
             href={""}
@@ -76,7 +77,7 @@ const HomePage = async () => {
           </Link>
         </div>
         <div className="mx-auto grid justify-center gap-4 grid-cols-2  md:grid-cols-3 2xl:grid-cols-4">
-          {/* {categories.map((category) => {
+          {categories.map((category) => {
             return (
               <Link
                 href={`/categories/${category._id}`}
@@ -94,14 +95,14 @@ const HomePage = async () => {
                 </div>
               </Link>
             );
-          })} */}
+          })}
         </div>
       </section>
 
       {/* Courses */}
       <section id="features" className="container space-y-6 md:py-12 lg:py-24">
         <div className="flex items-center justify-between">
-          {/* <SectionTitle>Featured Courses</SectionTitle> */}
+          <SectionTitle>Featured Courses</SectionTitle>
           <Link
             href={"/courses"}
             className=" text-sm font-medium  hover:opacity-80 flex items-center gap-1"
@@ -110,9 +111,9 @@ const HomePage = async () => {
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
-          {/* {courses.slice(1).map((course) => {
+          {courses.map((course) => {
             return <CourseCard key={course._id.toString()} course={course} />;
-          })} */}
+          })}
         </div>
       </section>
     </div>
