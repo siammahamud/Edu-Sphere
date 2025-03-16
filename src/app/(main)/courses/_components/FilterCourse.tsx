@@ -130,7 +130,7 @@ const FilterCourse = () => {
             <span className="font-medium text-gray-900">Price</span>
           </AccordionTrigger>
 
-          <AccordionContent className="pt-6 animate-none">
+          <AccordionContent className="pt-6 animate-none h-20">
             <ul className="space-y-4">
               {PRICE_OPTIONS.map((option, optionIdx) => (
                 <li key={option.value} className="flex items-center">

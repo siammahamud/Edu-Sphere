@@ -15,6 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
 import { INavItem } from "@/types/nav";
+// import { useTheme } from "next-themes";
 
 interface MainNavProps {
   items: INavItem[];
@@ -22,6 +23,7 @@ interface MainNavProps {
 }
 export function MainNav({ items, children }: MainNavProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <>
@@ -49,7 +51,7 @@ export function MainNav({ items, children }: MainNavProps) {
           <MobileNav items={items}>{children}</MobileNav>
         )}
       </div>
-      <nav className="flex items-center gap-3">
+      <nav className="flex items-center gap-3 ">
         <div className="items-center gap-3 hidden lg:flex">
           <Link
             href="/login"
@@ -73,9 +75,18 @@ export function MainNav({ items, children }: MainNavProps) {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <div className="cursor-pointer">
+
+        {/* profile avatar dropdown menu  */}
+        <div
+          className="relative"
+          onBlur={() => setShowDropdown(false)}
+          tabIndex={0}
+        >
+          <div>
+            <div
+              className="cursor-pointer"
+              onClick={() => setShowDropdown(!showDropdown)}
+            >
               <Avatar>
                 <AvatarImage
                   src="https://github.com/shadcn.png"
@@ -84,22 +95,31 @@ export function MainNav({ items, children }: MainNavProps) {
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </div>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56 mt-4">
-            <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="account">Profile</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="account/enrolled-courses">My Courses</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="">Testimonials & Certificates</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="">Logout</Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            <div className=" absolute -left-44 bg-white border rounded-md shadow-md mt-2 w-50 ">
+              {/* ড্রপডাউন মেনু  */}
+              {showDropdown && (
+                <div className="p-2">
+                  <Link href="account" className="block p-2 hover:bg-gray-100">
+                    Profile
+                  </Link>
+                  <Link
+                    href="account/enrolled-courses"
+                    className="block p-2 hover:bg-gray-100"
+                  >
+                    My Courses
+                  </Link>
+                  <Link href="" className="block p-2 hover:bg-gray-100">
+                    Testimonials & Certificates
+                  </Link>
+                  <Link href="" className="block p-2 hover:bg-gray-100">
+                    Logout
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        {/* mobile navbar icon  */}
         <button
           className="flex items-center space-x-2 lg:hidden"
           onClick={() => setShowMobileMenu(!showMobileMenu)}

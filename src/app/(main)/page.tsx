@@ -6,8 +6,9 @@ import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { getCategories } from "@/controllers/category-controller";
+
+import CourseCard from "./courses/_components/CourseCard";
 import { SectionTitle } from "@/components/sectionTitle";
-import CourseCard from "./courses/_components/courseCard";
 
 
 const HomePage = async () => {
@@ -70,7 +71,7 @@ const HomePage = async () => {
           <SectionTitle>Categories</SectionTitle>
 
           <Link
-            href={""}
+            href={"/courses"}
             className=" text-sm font-medium  hover:opacity-80 flex items-center gap-1"
           >
             Browse All <ArrowRightIcon className="h-4 w-4" />

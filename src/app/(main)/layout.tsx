@@ -26,14 +26,14 @@ const navLinks: INavItem[] = [
 ];
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-[220vh] flex-col">
       <header className="z-40 bg-gray-200/80 backdrop-blur-md fixed top-0 left-0 right-0 border-b ">
         <div className="container mx-auto flex h-20 items-center justify-between py-6 ">
           <MainNav items={navLinks} />
         </div>
       </header>
       <main className="flex-1 pt-20 flex flex-col">{children}</main>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

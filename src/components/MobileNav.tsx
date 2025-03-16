@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { useLockBody } from "@/hooks/useLockBody";
+// import { useLockBody } from "@/hooks/useLockBody";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,7 +17,7 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ items, children }: MobileNavProps) {
-  useLockBody();
+  // useLockBody();
   return (
     <div
       className={cn(
