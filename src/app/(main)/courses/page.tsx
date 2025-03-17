@@ -11,7 +11,6 @@ const CoursesPage = async () => {
 
   return (
     <section
-      id="courses"
       className="container mx-auto space-y-6 dark:bg-transparent py-6 px-4 sm:px-8 md:px-12 lg:px-20"
     >
       <h2 className="text-xl md:text-2xl font-medium">All Courses</h2>
