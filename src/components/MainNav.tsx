@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
@@ -24,6 +24,21 @@ interface MainNavProps {
 export function MainNav({ items, children }: MainNavProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // making the profile dropdown menu hidden by clicking outside 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
 
   return (
     <>
@@ -77,11 +92,7 @@ export function MainNav({ items, children }: MainNavProps) {
         </div>
 
         {/* profile avatar dropdown menu  */}
-        <div
-          className="relative"
-          onBlur={() => setShowDropdown(false)}
-          tabIndex={0}
-        >
+        <div className="relative" ref={dropdownRef}>
           <div>
             <div
               className="cursor-pointer"
@@ -95,23 +106,32 @@ export function MainNav({ items, children }: MainNavProps) {
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </div>
-            <div className=" absolute -left-44 bg-white border rounded-md shadow-md mt-2 w-50 ">
+            <div className="text-sm absolute -left-44 bg-white border rounded-md shadow-md mt-2 w-50 ">
               {/* ড্রপডাউন মেনু  */}
               {showDropdown && (
-                <div className="p-2">
-                  <Link href="account" className="block p-2 hover:bg-gray-100">
+                <div onClick={(e) => e.stopPropagation()} className="p-2">
+                  <Link
+                    href="account"
+                    className="block p-1.5 border-b-gray-400 border-b hover:bg-gray-100"
+                  >
                     Profile
                   </Link>
                   <Link
                     href="account/enrolled-courses"
-                    className="block p-2 hover:bg-gray-100"
+                    className="block p-1.5 border-b-gray-400 border-b hover:bg-gray-100"
                   >
                     My Courses
                   </Link>
-                  <Link href="" className="block p-2 hover:bg-gray-100">
+                  <Link
+                    href=""
+                    className="block p-1.5 border-b-gray-400 border-b hover:bg-gray-100"
+                  >
                     Testimonials & Certificates
                   </Link>
-                  <Link href="" className="block p-2 hover:bg-gray-100">
+                  <Link
+                    href=""
+                    className="block p-1.5 border-b-gray-400 hover:bg-gray-100"
+                  >
                     Logout
                   </Link>
                 </div>
