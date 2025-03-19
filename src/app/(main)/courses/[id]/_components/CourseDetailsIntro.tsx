@@ -60,8 +60,8 @@
 
 // export default CourseDetailsIntro;
 
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 interface CourseDetailsIntroProps {
   title: string;
@@ -74,19 +74,20 @@ const CourseDetailsIntro: React.FC<CourseDetailsIntroProps> = ({
   title,
   subtitle,
   thumbnail,
-  altText = 'Course Thumbnail',
+  altText = "Course Thumbnail",
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+    <div className="bg-white rounded-lg shadow-md p-6 mb-8 container h-[100%]">
       <div className="flex flex-col md:flex-row items-center gap-6">
         {/* Thumbnail */}
         <div className="w-full md:w-1/3">
-          <div className="relative aspect-w-16 aspect-h-9 rounded-md overflow-hidden">
+          <div className="relative  rounded-md ">
             <Image
-              src={thumbnail}
+              src={`/assets/images/courses/learn_js_thumbnail.jpg`}
               alt={altText}
-              layout="fill"
-              objectFit="cover"
+              // layout="fill"
+              height={500}
+              width={700}
             />
           </div>
         </div>
@@ -94,9 +95,7 @@ const CourseDetailsIntro: React.FC<CourseDetailsIntroProps> = ({
         {/* Title and Subtitle */}
         <div className="w-full md:w-2/3 text-center md:text-left">
           <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
-          {subtitle && (
-            <p className="mt-2 text-lg text-gray-600">{subtitle}</p>
-          )}
+          {subtitle && <p className="mt-2 text-lg text-gray-600">{subtitle}</p>}
         </div>
       </div>
     </div>
