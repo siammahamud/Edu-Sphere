@@ -6,42 +6,37 @@ import { Testimonial } from "@/model/testimonial-model";
 import { User } from "@/model/user-model";
 
 //get all courses from db
-  export async function getCourses(): Promise<ICourse[]> {
-    const courses = await Course.find({})
-      .populate({
-        path: "category",
-        model: Category,
-      })
-      .populate({
-        path: "instructor",
-        model: User,
-      })
-      .populate({
-        path: "testimonials",
-        model: Testimonial,
-      })
-      .populate({
-        path: "modules",
-        model: Module,
-      });
-    return courses;
-  }
-
-// get course details from db
-export async function getCourseDetails(id: string) {
-  const course = await Course.findById(id)
+export async function getCourses(): Promise<ICourse[]> {
+  const courses = await Course.find({})
     .populate({
-      path: "testimonials",
-      model: Testimonial,
-      populate: {
-        path: "user",
-        model: User,
-      },
+      path: "category",
+      model: Category,
     })
     .populate({
       path: "instructor",
       model: User,
+    })
+    .populate({
+      path: "testimonials",
+      model: Testimonial,
+    })
+    .populate({
+      path: "modules",
+      model: Module,
     });
-  return course;
+  return courses;
 }
 
+// get course details from db
+export async function getCourseDetails(id: string) {
+  const course = await Course.findById(id).populate({
+    path: "testimonials",
+    model: Testimonial,
+    populate: {
+      path: "user",
+      model: User,
+    },
+  });
+
+  return course;
+}

@@ -8,8 +8,7 @@ import Image from "next/image";
 import { getCategories } from "@/controllers/category-controller";
 
 import CourseCard from "./courses/_components/CourseCard";
-import { SectionTitle } from "@/components/sectionTitle";
-
+import { SectionTitle } from "@/components/SectionTitle";
 
 const HomePage = async () => {
   const courses = await getCourses();

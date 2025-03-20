@@ -1,8 +1,11 @@
-import { Rating as ReactRating } from "@smastrom/react-rating";
+import { FaStar } from "react-icons/fa";
+
 export function StarRating({ rating }) {
+  const stars = new Array(rating).fill(0);
+  console.log(stars);
   return (
-    <>
-      <ReactRating style={{ maxWidth: 80 }} value={rating} readOnly />
-    </>
+    <div className="flex gap-0.5 text-cyan-400">
+    {stars.map((star, index) => <FaStar key={index}/>)}
+    </div>
   );
 }

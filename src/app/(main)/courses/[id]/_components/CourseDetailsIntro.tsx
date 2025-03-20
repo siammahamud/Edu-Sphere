@@ -77,13 +77,13 @@ const CourseDetailsIntro: React.FC<CourseDetailsIntroProps> = ({
   altText = "Course Thumbnail",
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-8 container h-[100%]">
+    <div className="bg-gradient-to-br from-cyan-200 to-indigo-100 rounded-lg shadow-md p-6 mb-8 container h-[100%]">
       <div className="flex flex-col md:flex-row items-center gap-6">
         {/* Thumbnail */}
         <div className="w-full md:w-1/3">
           <div className="relative  rounded-md ">
             <Image
-              src={`/assets/images/courses/learn_js_thumbnail.jpg`}
+              src={`/assets/images/courses/${thumbnail}`}
               alt={altText}
               // layout="fill"
               height={500}
