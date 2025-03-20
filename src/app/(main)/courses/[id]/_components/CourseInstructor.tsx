@@ -6,7 +6,7 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 
 const CourseInstructor = async ({ course }) => {
- 
+  const  fullName = `${course?.instructor?.firstName} ${course?.instructor?.lastName}`
   return (
     <div className="bg-gray-50 rounded-md p-8">
       <div className="md:flex md:gap-x-5 mb-8">
@@ -21,7 +21,7 @@ const CourseInstructor = async ({ course }) => {
         </div>
         <div className="flex-1">
           <div className="max-w-[300px]">
-            <h4 className="text-[34px] font-bold leading-[51px]">{course?.fullName}</h4>
+            <h4 className="text-[34px] font-bold leading-[51px]">{fullName}</h4>
             <div className="text-gray-600 font-medium mb-6">
               {course?.instructor?.designation}
             </div>

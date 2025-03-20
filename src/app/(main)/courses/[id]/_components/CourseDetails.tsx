@@ -1,13 +1,13 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatDate } from "@/lib/formateDate";
-// import CourseOverview from "./CourseOverview";
+import CourseOverview from "./CourseOverview";
 import Image from "next/image";
-// import CourseInstructor from "./CourseInstructor";
-// import CourseCurriculum from "./CourseCurriculum";
+import CourseInstructor from "./CourseInstructor";
+import CourseCurriculum from "./CourseCurriculum";
 
 const CourseDetails = ({ course }) => {
   const lastModifiedDate = formatDate(course?.modifiedOn);
-
+  const fullName = `${course?.instructor?.firstName} ${course?.instructor?.lastName}`;
   return (
     <section className="py-8 md:py-12 lg:py-24">
       <div className="container">
@@ -24,13 +24,11 @@ const CourseDetails = ({ course }) => {
             <Image
               className="w-[40px] h-[40px] rounded-full"
               src={course?.instructor?.profilePicture}
-              alt={course?.instructor?.firstName}
+              alt={fullName}
               width={20}
               height={20}
             />
-            <p className="font-bold">
-              {course?.instructor?.firstName} {course?.instructor?.lastName}
-            </p>
+            <p className="font-bold">{fullName}</p>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-success font-semibold">Last Updated: </span>
@@ -49,13 +47,13 @@ const CourseDetails = ({ course }) => {
             </TabsList>
             <TabsContent value="overview">
               {/* each tab content can be independent component */}
-              {/* <CourseOverview course={course} /> */}
+              <CourseOverview course={course} />
             </TabsContent>
             <TabsContent value="curriculum">
-              {/* <CourseCurriculum course={course} /> */}
+              <CourseCurriculum course={course} />
             </TabsContent>
             <TabsContent value="instructor">
-              {/* <CourseInstructor course={course} /> */}
+              <CourseInstructor course={course} />
             </TabsContent>
           </Tabs>
         </div>

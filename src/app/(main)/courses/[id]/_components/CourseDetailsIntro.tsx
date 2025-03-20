@@ -93,9 +93,9 @@ const CourseDetailsIntro: React.FC<CourseDetailsIntroProps> = ({
         </div>
 
         {/* Title and Subtitle */}
-        <div className="w-full md:w-2/3 text-center md:text-left">
-          <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
-          {subtitle && <p className="mt-2 text-lg text-gray-600">{subtitle}</p>}
+        <div className="w-full md:w-2/3 text-center md:text-left mb-12">
+          <h1 className="text-6xl font-bold text-gray-900">{title}</h1>
+          {subtitle && <p className="mt-2 text-3xl text-gray-600">{subtitle}</p>}
         </div>
       </div>
     </div>

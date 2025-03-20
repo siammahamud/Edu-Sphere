@@ -36,7 +36,17 @@ export async function getCourseDetails(id: string) {
       path: "user",
       model: User,
     },
+  }).populate({
+    path:"instructor",
+    model:User
+  }).populate({
+    path:"modules",
+    model:Module
   });
 
   return course;
 }
+
+  export async function getCourseDetailsByInstructor () {
+    
+  } 

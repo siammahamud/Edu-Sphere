@@ -26,10 +26,13 @@ export function MainNav({ items, children }: MainNavProps) {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // making the profile dropdown menu hidden by clicking outside 
+  // making the profile dropdown menu hidden by clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setShowDropdown(false);
       }
     }
@@ -38,7 +41,6 @@ export function MainNav({ items, children }: MainNavProps) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
 
   return (
     <>
@@ -94,6 +96,8 @@ export function MainNav({ items, children }: MainNavProps) {
         {/* profile avatar dropdown menu  */}
         <div className="relative" ref={dropdownRef}>
           <div>
+           
+
             <div
               className="cursor-pointer"
               onClick={() => setShowDropdown(!showDropdown)}
@@ -106,10 +110,11 @@ export function MainNav({ items, children }: MainNavProps) {
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </div>
-            <div className="text-sm absolute -left-44 bg-white border rounded-md shadow-md mt-2 w-50 ">
+            <div className="text-sm absolute -left-44 bg-white border rounded-sm shadow-md mt-2 w-50 ">
               {/* ড্রপডাউন মেনু  */}
               {showDropdown && (
-                <div onClick={(e) => e.stopPropagation()} className="p-2">
+                <div onClick={(e) => e.stopPropagation()} className="p-2 relative">
+                   <div className="-top-2 right-0.5 absolute w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-cyan-400"></div>
                   <Link
                     href="account"
                     className="block p-1.5 border-b-gray-400 border-b hover:bg-gray-100"
