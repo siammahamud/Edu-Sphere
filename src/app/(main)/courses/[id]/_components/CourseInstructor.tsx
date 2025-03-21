@@ -4,8 +4,9 @@ import { UsersRound } from "lucide-react";
 import { MessageSquare } from "lucide-react";
 import { Star } from "lucide-react";
 import Image from "next/image";
-
+import { getCourseDetailsByInstructor } from "@/controllers/course-controller";
 const CourseInstructor = async ({ course }) => {
+  const courseDetailsByInstructor = await getCourseDetailsByInstructor(course?.instructor?.id)
   const  fullName = `${course?.instructor?.firstName} ${course?.instructor?.lastName}`
   return (
     <div className="bg-gray-50 rounded-md p-8">
