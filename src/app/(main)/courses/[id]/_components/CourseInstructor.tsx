@@ -9,9 +9,9 @@ const CourseInstructor = async ({ course }) => {
   const courseDetailsByInstructor = await getCourseDetailsByInstructor(course?.instructor?.id)
   const  fullName = `${course?.instructor?.firstName} ${course?.instructor?.lastName}`
   return (
-    <div className="bg-gray-50 rounded-md p-8">
+    <div className="bg-gray-50 rounded-md p-8 ">
       <div className="md:flex md:gap-x-5 mb-8">
-        <div className="h-[310px] w-[270px] max-w-full flex-none rounded mb-5 md:mb-0">
+        <div className="h-[310px] w-[270px] max-w-full flex-none rounded my-5 md:mb-0">
           <Image
             src={course?.instructor?.profilePicture}
             alt={fullName}
@@ -22,8 +22,8 @@ const CourseInstructor = async ({ course }) => {
         </div>
         <div className="flex-1">
           <div className="max-w-[300px]">
-            <h4 className="text-[34px] font-bold leading-[51px]">{fullName}</h4>
-            <div className="text-gray-600 font-medium mb-6">
+            <h4 className="text-[34px] font-bold ">{fullName}</h4>
+            <div className="text-gray-600 font-medium mb-6 text-sm">
               {course?.instructor?.designation}
             </div>
             <ul className="list space-y-4">
@@ -49,7 +49,7 @@ const CourseInstructor = async ({ course }) => {
           </div>
         </div>
       </div>
-      <p className="text-gray-600">{instructor?.bio}</p>
+      <p className="text-gray-600">{course?.instructor?.bio}</p>
     </div>
   );
 };

@@ -10,7 +10,8 @@ export interface IUser{
   role: string;
   bio?: string; // Optional field
   socialMedia?: object; // Optional field (social media links)
-  profilePicture?: string; // Optional field
+  profilePicture?: string;
+  designation?:string; // Optional field
 }
 
 export type UserModel = Model<IUser, Record<string, unknown>>;

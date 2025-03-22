@@ -38,6 +38,10 @@ const userSchema = new Schema<IUser>({
     required: false,
     type: String,
   },
+  designation: {
+    required: false,
+    type: String,
+  },
 });
 
 export const User =
