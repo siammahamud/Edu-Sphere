@@ -7,7 +7,8 @@ export interface IModule {
   status: string;
   slug: string;
   course: Types.ObjectId; // Reference to the Course model
-  lessonIds: Types.ObjectId[]; // Array of references to Lesson models
+  lessonIds: Types.ObjectId[];
+  duration: number // Array of references to Lesson models
 }
 
 export type ModuleModel = Model<IModule, Record<string, unknown>>;

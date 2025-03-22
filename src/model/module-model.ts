@@ -26,7 +26,12 @@ const moduleSchema = new Schema<IModule>({
     required: true,
     type: [Schema.ObjectId],
   },
+  duration: {
+    required: true,
+    type: Number,
+  },
 });
 
 export const Module =
-  mongoose.models.Module ?? mongoose.model<IModule,ModuleModel>("Module", moduleSchema);
+  mongoose.models.Module ??
+  mongoose.model<IModule, ModuleModel>("Module", moduleSchema);
