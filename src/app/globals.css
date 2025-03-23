@@ -130,3 +130,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition;
+  }
+  .div-signup {
+    @apply  rounded-br-[500px]  top-0 left-0
+  }
+  .div-signin {
+    @apply   rounded-tl-[500px] bottom-0 right-0
+  }
+}
