@@ -10,10 +10,14 @@ const SignIn: React.FC = () => {
   return (
     <div className="flex w-[100vw] bg-gray-200 min-h-screen items-center justify-center p-6  overflow-hidden">
       {/* Animated background shape */}
-      <div className="flex h-[80vh] w-[700px] shadow-xl relative">
-       
-      
-        <div className="bg-red-500 text-white flex justify-center items-center h-full w-[50%] rounded-tl-xl rounded-bl-xl">
+      <div className="flex h-[80vh] w-[700px] shadow-xl relative bg-transparent ">
+        <motion.div
+          className="bg-red-500 text-white flex justify-center items-center h-full w-[50%] rounded-tl-xl rounded-bl-xl"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* <div className="bg-red-500 text-white flex justify-center items-center h-full w-[50%] rounded-tl-xl rounded-bl-xl"> */}
           <div className="flex gap-2 flex-col justify-center items-center">
             <h1 className="text-4xl font-bold ">Wellcome</h1>
             <p className="text-center text-gray-300">
@@ -21,7 +25,8 @@ const SignIn: React.FC = () => {
               password to login
             </p>
           </div>
-        </div>
+          {/* </div> */}
+        </motion.div>
         {/* Signup/Login form */}
         <motion.div
           className="max-w-md w-[50%] py-4 px-8  rounded-tr-xl rounded-br-xl  bg-blue-200"
@@ -52,7 +57,7 @@ const SignIn: React.FC = () => {
           </form>
           <p className="text-center text-gray-500 mt-4">
             Don't have an account.
-            <button className="text-blue-600 hover:underline px-5">
+            <button className="text-blue-600 hover:underline px-5 cursor-pointer">
               Sign Up
             </button>
           </p>
