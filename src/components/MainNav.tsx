@@ -15,7 +15,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
 import { INavItem } from "@/types/nav";
-// import { useTheme } from "next-themes";
 
 interface MainNavProps {
   items: INavItem[];
@@ -24,6 +23,7 @@ interface MainNavProps {
 export function MainNav({ items, children }: MainNavProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // making the profile dropdown menu hidden by clicking outside
@@ -68,8 +68,12 @@ export function MainNav({ items, children }: MainNavProps) {
           <MobileNav items={items}>{children}</MobileNav>
         )}
       </div>
+
       <nav className="flex items-center gap-3 ">
-        <div className="items-center gap-3 hidden lg:flex">
+        <div
+          onClick={() => setIsSignInOpen(true)}
+          className="items-center gap-3 hidden lg:flex"
+        >
           <Link
             href="/login"
             className={cn(buttonVariants({ size: "sm" }), "px-4")}
@@ -96,8 +100,6 @@ export function MainNav({ items, children }: MainNavProps) {
         {/* profile avatar dropdown menu  */}
         <div className="relative" ref={dropdownRef}>
           <div>
-           
-
             <div
               className="cursor-pointer"
               onClick={() => setShowDropdown(!showDropdown)}
@@ -113,8 +115,11 @@ export function MainNav({ items, children }: MainNavProps) {
             <div className="text-sm absolute -left-44 bg-white border rounded-sm shadow-md mt-2 w-50 ">
               {/* ড্রপডাউন মেনু  */}
               {showDropdown && (
-                <div onClick={(e) => e.stopPropagation()} className="p-2 relative">
-                   <div className="-top-2 right-0.5 absolute w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-cyan-400"></div>
+                <div
+                  onClick={(e) => e.stopPropagation()}
+                  className="p-2 relative"
+                >
+                  <div className="-top-2 right-0.5 absolute w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-cyan-400"></div>
                   <Link
                     href="account"
                     className="block p-1.5 border-b-gray-400 border-b hover:bg-gray-100"
