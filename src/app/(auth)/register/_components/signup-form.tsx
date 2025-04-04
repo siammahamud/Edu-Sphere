@@ -26,43 +26,6 @@ export default function SignupForm({ role = "student" }: SignupFormProps) {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  //   const handleSubmit = async (e: React.FormEvent) => {
-  //     e.preventDefault();
-  //     setError(null);
-
-  //     if (form.password !== form.confirmPassword) {
-  //       setError("Passwords do not match.");
-  //       return;
-  //     }
-
-  //     try {
-  //       setLoading(true);
-  //       const response = await fetch("/api/register", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           firstName: form.firstName,
-  //           lastName: form.lastName,
-  //           email: form.email,
-  //           password: form.password,
-  //           role: role === "student" || role === "instructor" ? role : "student",
-  //         }),
-  //       });
-
-  //       if (response.status === 201) {
-  //         router.push("/login");
-  //       } else {
-  //         const data = await response.json();
-  //         setError(data.message || "Registration failed.");
-  //       }
-  //     } catch (err: any) {
-  //       setError(err.message || "Something went wrong.");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -75,24 +38,24 @@ export default function SignupForm({ role = "student" }: SignupFormProps) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          firstname: form.firstName,
-          lastname: form.lastName,
+          firstName: form.firstName,
+          lastName: form.lastName,
           email: form.email,
           password: form.password,
           role: role == "student" || role == "instructor" ? role : "student",
         }),
       });
+
       if (response.status === 201) {
         router.push("/login");
-      }else{
-        data = await response.json();
-        setError(data.message || "registration failed..")
+      } else {
+        const data = await response.json();
+        setError(data.message || "registration failed..");
       }
-    } catch (error:any) {
-        setError(error.message || "something went wrong");
-    }
-    finally{
-        setLoading(false);
+    } catch (error: any) {
+      setError(error.message || "something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
