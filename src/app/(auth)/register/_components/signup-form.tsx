@@ -1,5 +1,6 @@
 "use client";
 
+import SocialLogin from "@/components/SocialLogin";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -61,68 +62,71 @@ export default function SignupForm({ role = "student" }: SignupFormProps) {
 
   return (
     <div className="w-[100%] h-screen flex justify-center items-center">
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-md mx-auto p-4 shadow-xl bg-gray-200"
-      >
-        <div className="flex gap-3">
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={form.firstName}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={form.lastName}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
-          />
-        </div>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={form.confirmPassword}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
-        />
-
-        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
+      <div className="bg-blue-200 shadow-xl px-8 py-5 rounded-2xl">
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-md mx-auto"
         >
-          {loading ? "Registering..." : "Sign Up"}
-        </button>
-      </form>
+          <div className="flex gap-3">
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={form.firstName}
+              onChange={handleChange}
+              required
+              className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={form.lastName}
+              onChange={handleChange}
+              required
+              className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
+            />
+          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={form.confirmPassword}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border-3 border-white  outline-blue-400 hover-outline-2 rounded mb-3"
+          />
+
+          {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition cursor-pointer"
+          >
+            {loading ? "Registering..." : "Sign Up"}
+          </button>
+        </form>
+        <SocialLogin />
+      </div>
     </div>
   );
 }

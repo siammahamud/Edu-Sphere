@@ -1,9 +1,6 @@
-// 
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
-
+import SocialLogin from "@/components/SocialLogin";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,25 +8,16 @@ export default function Login() {
   return (
     <div className=" flex min-h-screen items-center justify-center p-6 relative overflow-hidden">
       {/* Animated background shape */}
-      <motion.div
-        className="size-[500px] absolute bg-indigo-500 top-0 left-0 rounded-br-full"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+
+      <div className="bg-blue-500 size-[500px] rounded-br-full absolute top-0 left-0">
         <div className="text-white w-full h-[50%] flex flex-col justify-center items-center">
           <h2 className="text-6xl">WELCOME BACK</h2>
           <p className="text-2xl">Login to your account</p>
         </div>
-      </motion.div>
+      </div>
 
       {/* Login form */}
-      <motion.div
-        className="max-w-md w-full py-4 px-8 bg-blue-200 shadow-xl rounded-2xl absolute top-[10%] right-[15%]"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="w-[400px] absolute top-10 right-[10%] bg-blue-300 p-5 rounded-2xl">
         <h2 className="text-2xl font-bold text-center text-gray-800 my-4">
           LOGIN
         </h2>
@@ -52,31 +40,15 @@ export default function Login() {
           <button className="btn-primary w-full cursor-pointer">Login</button>
         </form>
         <p className="text-center text-gray-500 mt-4">
-          Don't have an account? {" "}
+          Don`t have an account?{" "}
           <button className="cursor-pointer text-blue-500 font-semibold">
             Sign Up
           </button>
         </p>
 
         {/* Social login options */}
-        <div className="flex items-center my-2 ">
-          <div className="flex-grow border-t border-gray-800"></div>
-          <span className="mx-4 text-gray-500">or</span>
-          <div className="flex-grow border-t border-gray-800"></div>
-        </div>
-
-        <div className="flex gap-4 justify-center mt-2 text-2xl">
-          <button className="p-2 cursor-pointer flex-grow bg-blue-200 hover:bg-blue-400 rounded-full flex justify-center items-center">
-            <FaGoogle className="text-red-500" />
-          </button>
-          <button className="p-2 cursor-pointer flex-grow bg-blue-200 hover:bg-blue-400 rounded-full flex justify-center items-center">
-            <FaFacebook className="text-blue-600" />
-          </button>
-          <button className="p-2 cursor-pointer flex-grow bg-blue-200 hover:bg-blue-400 rounded-full flex justify-center items-center">
-            <FaGithub className="text-gray-800" />
-          </button>
-        </div>
-      </motion.div>
+        <SocialLogin />
+      </div>
     </div>
   );
 }
