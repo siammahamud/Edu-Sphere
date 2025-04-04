@@ -70,31 +70,30 @@ export function MainNav({ items, children }: MainNavProps) {
       </div>
 
       <nav className="flex items-center gap-3 ">
-        <div
-          onClick={() => setIsSignInOpen(true)}
-          className="items-center gap-3 hidden lg:flex"
-        >
+        <div className="items-center gap-3 hidden lg:flex">
           <Link
             href="/login"
             className={cn(buttonVariants({ size: "sm" }), "px-4")}
           >
             Login
           </Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
-                Register
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 mt-4">
-              <DropdownMenuItem className="cursor-pointer">
-                <Link href="">Student</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="cursor-pointer">
-                <Link href="">Instructor</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <div ref={dropdownRef }>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm">
+                  Register
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 mt-4">
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href="/register/student">Student</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href="/register/instructor">Instructor</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
 
         {/* profile avatar dropdown menu  */}
