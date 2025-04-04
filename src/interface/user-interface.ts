@@ -1,17 +1,17 @@
 import { Model } from "mongoose";
 
 // Interface for the User document
-export interface IUser{
+export interface IUser {
   firstName: string;
   lastName: string;
   password: string;
   email: string;
-  phone: string;
+  phone?: string;
   role: string;
   bio?: string; // Optional field
   socialMedia?: object; // Optional field (social media links)
   profilePicture?: string;
-  designation?:string; // Optional field
+  designation?: string; // Optional field
 }
 
 export type UserModel = Model<IUser, Record<string, unknown>>;

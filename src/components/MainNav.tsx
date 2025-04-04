@@ -77,7 +77,7 @@ export function MainNav({ items, children }: MainNavProps) {
           >
             Login
           </Link>
-          <div ref={dropdownRef }>
+          <div ref={dropdownRef}>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
@@ -85,12 +85,16 @@ export function MainNav({ items, children }: MainNavProps) {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56 mt-4">
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href="/register/student">Student</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href="/register/instructor">Instructor</Link>
-                </DropdownMenuItem>
+                <Link href="/register/student">
+                  <DropdownMenuItem className="cursor-pointer">
+                    Student
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/register/instructor">
+                  <DropdownMenuItem className="cursor-pointer">
+                    Instructor
+                  </DropdownMenuItem>
+                </Link>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
